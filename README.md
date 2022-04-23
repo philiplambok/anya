@@ -1,8 +1,6 @@
 # Anya
 
-Webmook or callbacks forwarder management app that build with Rails and Hotwire.
-
-Things you may want to cover:
+Webhooks or callbacks forwarder management app that build with Rails and Hotwire.
 
 * Ruby version
 
