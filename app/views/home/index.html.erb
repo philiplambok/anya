@@ -1,2 +1,32 @@
-<h1>Hello, Welcome</h1>
-<p>Your booked URL is <pre><%= request_url(current_user.uuid) %></pre></p>
+<p>Your booked URL is <pre><%= root_url + "requests/#{current_user.uuid}" %></pre></p>
+
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">URL</th>
+      <th scope="col">Method</th>
+      <th scope="col">Body</th>
+      <th scope="col">Timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @requests.any? %>
+      <% @requests.each.with_index(1) do |req, index|  %>
+        <tr>
+          <th scope="row"><%= index %></th>
+          <td><%= req.request_url %></td>
+          <td><%= req.request_method %></td>
+          <td><%= req.request_body %></td>
+          <td><%= req.created_at %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="5">Data not found</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
