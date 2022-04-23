@@ -5,7 +5,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">URL</th>
       <th scope="col">Method</th>
       <th scope="col">Body</th>
@@ -15,17 +14,7 @@
   <tbody>
     <% if @requests.any? %>
       <% @requests.each.with_index(1) do |req, index|  %>
-        <tr>
-          <th scope="row"><%= index %></th>
-          <td><%= req.request_url %></td>
-          <td><%= req.request_method %></td>
-          <td>
-            <pre>
-              <%= JSON.parse(req.request_body) %>
-            </pre>
-          </td>
-          <td><%= req.created_at %></td>
-        </tr>
+        <%= render req %>
       <% end %>
     <% else %>
       <tr>
