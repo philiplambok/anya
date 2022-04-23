@@ -19,7 +19,11 @@
           <th scope="row"><%= index %></th>
           <td><%= req.request_url %></td>
           <td><%= req.request_method %></td>
-          <td><%= req.request_body %></td>
+          <td>
+            <pre>
+              <%= JSON.parse(req.request_body) %>
+            </pre>
+          </td>
           <td><%= req.created_at %></td>
         </tr>
       <% end %>

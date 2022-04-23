@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def show
     user = User.find_by(uuid: params[:id])
     return render json: { message: 'ok' } if user.blank?
