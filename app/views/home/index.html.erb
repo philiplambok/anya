@@ -1,3 +1,5 @@
+<%= turbo_stream_from current_user, 'user_request' %>
+
 <p>Your booked URL is <pre><%= root_url + "requests/#{current_user.uuid}" %></pre></p>
 
 <hr>
@@ -11,15 +13,9 @@
       <th scope="col">Timestamp</th>
     </tr>
   </thead>
-  <tbody>
-    <% if @requests.any? %>
-      <% @requests.each.with_index(1) do |req, index|  %>
-        <%= render req %>
-      <% end %>
-    <% else %>
-      <tr>
-        <td colspan="5">Data not found</td>
-      </tr>
+  <tbody id="user_requests" is="turbo-frame">
+    <% @requests.each.with_index(1) do |req, index|  %>
+      <%= render req %>
     <% end %>
   </tbody>
 </table>
