@@ -8,7 +8,7 @@ Webhooks or callbacks forwarder management app that build with Rails and Hotwire
 
 * System dependencies
 
-  Postgsql & Redis
+  Postgresql & Redis
 
 * Configuration
 
@@ -30,6 +30,12 @@ Webhooks or callbacks forwarder management app that build with Rails and Hotwire
 
   ```
   bin/rails test
+  ```
+
+* How to run the app in your local
+
+  ```
+  bin/dev
   ```
 
 * Deployment instructions
