@@ -1,7 +1,6 @@
-# README
+# Anya
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Webhook forwarder app build with Rails and hotwire <3
 
 Things you may want to cover:
 
