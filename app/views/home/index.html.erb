@@ -1,6 +1,15 @@
 <%= turbo_stream_from current_user, 'user_request' %>
 
-<p>Your booked URL is <pre><%= root_url + "requests/#{current_user.uuid}" %></pre></p>
+<div class="d-flex justify-content-between align-items-start">
+  <div>
+    <p>Your booked URL is <pre><%= root_url + "requests/#{current_user.uuid}" %></pre></p>
+  </div>
+
+  <%= link_to 'Clear history', 
+      dashboards_requests_path, 
+      class: 'btn btn-sm btn-primary',
+      data: { turbo_method: :delete } %>
+</div>
 
 <hr>
 
