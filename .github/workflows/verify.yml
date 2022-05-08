@@ -38,12 +38,17 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:11
+        image: postgres
         env:
-          POSTGRES_USER: myapp
-          POSTGRES_DB: anya_test
-          POSTGRES_PASSWORD: ""
-        ports: ["5432:5432"]
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
       - name: Checkout code
@@ -69,14 +74,22 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get -yqq install libpq-dev
       - name: Setup test database
         env:
-          RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: myapp
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          RAILS_ENV: test
         run: |
           bin/rails db:setup
       - name: Run unit tests
-        run: bin/rails test
-      - name: Run system tests
-        run: bin/rails test:system
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          RAILS_ENV: test
+        run: |
+          bin/rails test && bin/rails test:system
