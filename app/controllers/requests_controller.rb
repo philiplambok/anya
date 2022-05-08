@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
     UserRequest.create!(
       user: user,
       request_url: request.url,
-      request_body: request.body.to_json,
+      request_body: request.body.string,
       request_method: request.method_symbol.to_s.upcase
     )
 

@@ -2,9 +2,7 @@
   <td><%= user_request.request_url %></td>
   <td><%= user_request.request_method %></td>
   <td>
-    <pre>
-      <%= JSON.parse(user_request.request_body) %>
-    </pre>
+    <pre><%= user_request.request_body %></pre>
   </td>
   <td><%= user_request.created_at %></td>
 </tr>
