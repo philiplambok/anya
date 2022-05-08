@@ -31,7 +31,7 @@ jobs:
           yarn install --pure-lockfile
       - name: Run linters
         run: |
-          bin/rubocop --parallel
+          bundle exec rubocop --parallel
 
   tests:
     name: Tests
