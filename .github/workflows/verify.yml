@@ -76,7 +76,7 @@ jobs:
         env:
           RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: myapp
+          PGUSER: anya
         run: |
           bin/rails db:setup
 
