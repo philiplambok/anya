@@ -92,4 +92,4 @@ jobs:
           PGPASSWORD: postgres
           RAILS_ENV: test
         run: |
-          bin/rails test && bin/rails test:system
+          bin/test
