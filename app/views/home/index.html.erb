@@ -1,18 +1,30 @@
 <%= turbo_stream_from current_user, 'user_request' %>
 
-<div class="d-flex justify-content-between align-items-start">
-  <div>
-    <p>Your booked URL is <pre><%= root_url + "requests/#{current_user.uuid}" %></pre></p>
+<div class="card">
+  <div class="card-header">
+    Webhook information
   </div>
-
-  <%= link_to 'Clear history', 
-      dashboards_requests_path, 
-      class: 'btn btn-sm btn-primary',
-      data: { turbo_method: :delete } %>
+  <div class="card-body">
+    <%= form_with(current_user) do %>
+      <div>
+        <p>Your booked URL is:</p>
+        <%= form.text_field :uuid,  %>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon3"><%= "#{root_url}requests/" %></span>
+          <%= form.text_field :uuid, class: 'form-control', value: current_user.uuid %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <hr>
-
+<div class="d-flex justify-content-end">
+  <%= link_to 'Clear history', 
+      dashboards_requests_path, 
+      class: 'btn btn-sm btn-primary ml-auto',
+      data: { turbo_method: :delete } %>
+</div>
 <table class="table">
   <thead>
     <tr>

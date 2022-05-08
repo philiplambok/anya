@@ -4,10 +4,8 @@ one:
   user: one
   request_url: MyString
   request_body: MyText
-  request_path: MyString
 
 two:
   user: two
   request_url: MyString
   request_body: MyText
-  request_path: MyString
