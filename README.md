@@ -26,10 +26,10 @@ Webhooks or callbacks forwarder management app that build with Rails and Hotwire
   bin/rails db:migrate
   ```
 
-* How to run the test suite
+* How to run the full test suite
 
   ```
-  bin/rails test
+  bin/test
   ```
 
 * How to run the app in your local
