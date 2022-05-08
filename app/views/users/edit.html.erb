@@ -1,0 +1,17 @@
+<%= turbo_frame_tag current_user do %>
+  <%= form_with(model: current_user, url: user_path(current_user), method: :put) do |form| %>
+    <div class="d-flex justify-content-between">
+      <div class="col-8">
+        <p>Your booked URL is:</p>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon3"><%= "#{root_url}requests/" %></span>
+          <%= form.text_field :uuid, class: 'form-control', value: current_user.uuid %>
+        </div>
+      </div>
+      <div>
+        <%= form.submit 'Save', class: 'btn btn-primary btn-sm' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -6,12 +6,17 @@
   </div>
 
   <div class="card-body">
-    <%= form_with(model: current_user, url: root_path) do |form| %>
-      <div>
-        <p>Your booked URL is:</p>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon3"><%= "#{root_url}requests/" %></span>
-          <%= form.text_field :uuid, class: 'form-control', value: current_user.uuid %>
+    <%= turbo_frame_tag current_user do %>
+      <div class="d-flex justify-content-between">
+        <div>
+          <p>Your booked URL is:</p>
+          <%= "#{root_url}requests/#{current_user.uuid}" %>
+        </div>
+        
+        <div>
+          <%= link_to edit_user_path(current_user), class: 'btn btn-warning btn-sm' do %>
+            Edit <i class="bi bi-pencil"></i>
+          <% end %>
         </div>
       </div>
     <% end %>

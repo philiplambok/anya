@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resource :requests, only: :destroy
   end
 
+  resources :users, only: %i[edit update]
+
   root 'home#index'
 end
