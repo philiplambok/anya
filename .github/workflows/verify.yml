@@ -40,7 +40,7 @@ jobs:
       postgres:
         image: postgres:11
         env:
-          POSTGRES_USER: anya
+          POSTGRES_USER: myapp
           POSTGRES_DB: anya_test
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
@@ -48,12 +48,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Setup Ruby and install gems
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
@@ -71,15 +69,13 @@ jobs:
       - name: Install packages
         run: |
           yarn install --pure-lockfile
-
       - name: Setup test database
         env:
           RAILS_ENV: test
           PGHOST: localhost
-          PGUSER: anya
+          PGUSER: myapp
         run: |
           bin/rails db:setup
-
       - name: Run unit tests
         run: bin/rails test
       - name: Run system tests
