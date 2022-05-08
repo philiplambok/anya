@@ -4,11 +4,11 @@
   <div class="card-header">
     Webhook information
   </div>
+
   <div class="card-body">
-    <%= form_with(current_user) do %>
+    <%= form_with(model: current_user, url: root_path) do |form| %>
       <div>
         <p>Your booked URL is:</p>
-        <%= form.text_field :uuid,  %>
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon3"><%= "#{root_url}requests/" %></span>
           <%= form.text_field :uuid, class: 'form-control', value: current_user.uuid %>
@@ -25,6 +25,7 @@
       class: 'btn btn-sm btn-primary ml-auto',
       data: { turbo_method: :delete } %>
 </div>
+
 <table class="table">
   <thead>
     <tr>
@@ -34,8 +35,9 @@
       <th scope="col">Timestamp</th>
     </tr>
   </thead>
+
   <tbody id="user_requests" is="turbo-frame">
-    <% @requests.each.with_index(1) do |req, index|  %>
+    <% @requests.each.with_index(1) do |req, index| %>
       <%= render req %>
     <% end %>
   </tbody>
