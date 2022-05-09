@@ -1,8 +1,45 @@
 <tr>
   <td><%= user_request.request_url %></td>
   <td><%= user_request.request_method %></td>
-  <td>
-    <pre><%= user_request.request_body %></pre>
-  </td>
   <td><%= user_request.created_at %></td>
+  <td>
+    <%= link_to '#', data: { 'bs-toggle': 'modal', 'bs-target': "##{dom_id(user_request, 'modal')}" } do %>
+      <i class="bi bi-info-square-fill"></i>
+    <% end %>
+
+    <div class="modal fade" id="<%= dom_id(user_request, 'modal') %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Request detail</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <tr>
+                <th>URL</th>
+                <td><%= user_request.request_url %></td>
+              </tr>
+              <tr>
+                <th>Method</th>
+                <td><%= user_request.request_method %></td>
+              </tr>
+              <tr>
+                <th>Timestamp</th>
+                <td><%= user_request.created_at %></td>
+              </tr>
+              <tr>
+                <th>Body</th>
+                <td><pre><%= user_request.request_body %></pre></td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </td>
 </tr>
