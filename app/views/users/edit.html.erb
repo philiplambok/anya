@@ -1,4 +1,11 @@
 <%= turbo_frame_tag current_user do %>
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= flash[:error] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
   <%= form_with(model: current_user, url: user_path(current_user), method: :put) do |form| %>
     <div class="d-flex justify-content-between">
       <div class="col-8">
