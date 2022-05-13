@@ -34,3 +34,9 @@ Metrics/BlockLength:
 
 Lint/MissingSuper:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
