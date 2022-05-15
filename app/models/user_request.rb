@@ -1,5 +1,7 @@
 class UserRequest < ApplicationRecord
   belongs_to :user
 
-  broadcasts_to ->(request) { [request.user, 'user_request'] }, inserts_by: :prepend
+  after_create_commit do |request|
+    broadcast_prepend_later_to request.user, 'user_request'
+  end
 end
