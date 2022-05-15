@@ -18,7 +18,10 @@
       </div>
       <div>
         <%= link_to 'Cancel', root_path, class: 'btn btn-default btn-sm' %>
-        <%= form.submit 'Save',class: 'btn btn-primary btn-sm' %>
+        <%= form.button class: 'btn btn-primary btn sm' do %>
+          <span class="show-when-enabled">Save</span>
+          <span class="show-when-disabled">Processing</span>
+        <% end %>
       </div>
     </div>
   <% end %>
