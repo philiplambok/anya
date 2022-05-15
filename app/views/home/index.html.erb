@@ -10,7 +10,7 @@
       <div class="d-flex justify-content-between">
         <div>
           <p>Your booked URL is:</p>
-          <%= "#{root_url}requests/#{current_user.uuid}" %>
+          <%= link_to "#{root_url}requests/#{current_user.uuid}", "#{root_url}requests/#{current_user.uuid}", target: '_blank' %>
         </div>
         
         <div>
