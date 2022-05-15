@@ -15,30 +15,31 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <table class="table">
-              <tr>
-                <th>URL</th>
-                <td><%= user_request.request_url %></td>
-              </tr>
-              <tr>
-                <th>Method</th>
-                <td><%= user_request.request_method %></td>
-              </tr>
-              <tr>
-                <th>Timestamp</th>
-                <td><%= user_request.created_at %></td>
-              </tr>
-              <tr>
-                <th>Header</th>
-                <td class="overflow-auto">
-                  <pre><%= user_request.request_header %></pre>
-                </td>
-              </tr>
-              <tr>
-                <th>Body</th>
-                <td class="overflow-auto"><pre><%= user_request.request_body %></pre></td>
-              </tr>
-            </table>
+            <div>
+              <span class="d-block fw-bold">URL</span>
+              <span class="d-block"><%= user_request.request_url %></span>
+            </div>
+            <div>
+              <span class="d-block fw-bold">Method</span>
+              <span class="d-block"><%= user_request.request_method %></span>
+            </div>
+            <div>
+              <span class="d-block fw-bold">Timestamp</span>
+              <span class="d-block"><%= user_request.created_at %></span>
+            </div>
+            <div>
+              <span class="d-block fw-bold">Request Header</span>
+              <span class="d-block"><pre><%= user_request.request_header %></pre>
+              </span>
+            </div>
+            <div>
+              <span class="d-block fw-bold">Request Body</span>
+              <% if user_request.request_body.present? %>
+                <span class="d-block"><pre><%= user_request.request_body %></pre></span>
+              <% else %>
+                <span class="d-block">-</span>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
