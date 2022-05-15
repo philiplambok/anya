@@ -1,0 +1,9 @@
+<div id="clear-history-btn" class="d-flex justify-content-end">
+  <% if current_user.user_requests.any? %>
+    <%= link_to 'Clear history', 
+        dashboards_requests_path,
+        id: 'clear-history-btn', 
+        class: 'btn btn-sm btn-primary ml-auto',
+        data: { turbo_method: :delete } %>
+  <% end %>
+</div>
